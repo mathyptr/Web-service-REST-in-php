@@ -43,3 +43,43 @@
 2021-04-18T21:32:04+02:00 [myLogger] GET METHOD ID= ALL
 2021-04-18T21:32:04+02:00 [myLogger] Ricerca Studenti
 2021-04-18T21:32:04+02:00 [myLogger] SELECT * FROM student
+2021-04-18T21:35:42+02:00 [myLogger] Creazione Oggetto Studente
+2021-04-18T21:35:42+02:00 [myLogger] GET METHOD ID= ALL
+2021-04-18T21:35:42+02:00 [myLogger] Ricerca Studenti
+2021-04-18T21:35:42+02:00 [myLogger] SELECT * FROM student
+2021-04-18T21:36:05+02:00 [myLogger] Creazione Oggetto Studente
+2021-04-18T21:36:05+02:00 [myLogger] Creazione Oggetto Studente
+2021-04-18T21:36:05+02:00 [myLogger] Inserimento Studente
+2021-04-18T21:36:05+02:00 [myLogger] insert into student (name,surname,sidi_code,tax_code) values (:name,:surname,:sidiCode,:taxCode)
+2021-04-18T21:36:05+02:00 [myLogger] Inserimento effettuato
+2021-04-18T21:36:05+02:00 [myLogger] Creazione Oggetto Studente
+2021-04-18T21:36:05+02:00 [myLogger] GET METHOD ID= ALL
+2021-04-18T21:36:05+02:00 [myLogger] Ricerca Studenti
+2021-04-18T21:36:05+02:00 [myLogger] SELECT * FROM student
+2021-04-18T21:36:20+02:00 [myLogger] Creazione Oggetto Studente
+2021-04-18T21:36:20+02:00 [myLogger] PUT METHOD{"name":"Mat","surname":"Patriii","sidi_code":"5656556","tax_code":"sfddfdfdf","oper":"edit","id":"1701"}
+2021-04-18T21:36:20+02:00 [myLogger] Aggiornamento Studente con id: 1701
+2021-04-18T21:36:20+02:00 [myLogger] UPDATE student set name=:name,surname=:surname,sidi_code=:sidiCode,tax_code=:taxCode WHERE id=:id
+2021-04-18T21:36:20+02:00 [myLogger] Aggiornamento effettuato {"_id":null,"_name":"Mat","_surname":"Patriii","_sidiCode":"5656556","_taxCode":"sfddfdfdf"}
+2021-04-18T21:36:20+02:00 [myLogger] Aggiornamento studente :Mat
+2021-04-18T21:36:20+02:00 [myLogger] Creazione Oggetto Studente
+2021-04-18T21:36:20+02:00 [myLogger] GET METHOD ID= ALL
+2021-04-18T21:36:20+02:00 [myLogger] Ricerca Studenti
+2021-04-18T21:36:20+02:00 [myLogger] SELECT * FROM student
+2021-04-18T21:36:22+02:00 [myLogger] Creazione Oggetto Studente
+2021-04-18T21:36:22+02:00 [myLogger] GET METHOD ID= ALL
+2021-04-18T21:36:22+02:00 [myLogger] Ricerca Studenti
+2021-04-18T21:36:22+02:00 [myLogger] SELECT * FROM student
+2021-04-18T21:36:32+02:00 [myLogger] Creazione Oggetto Studente
+2021-04-18T21:36:32+02:00 [myLogger] Cancellazione Studente con id: 1701
+2021-04-18T21:36:32+02:00 [myLogger] DELETE FROM student_class where id_student=:id
+2021-04-18T21:36:32+02:00 [myLogger] DELETE FROM student where id=:id
+2021-04-18T21:36:32+02:00 [myLogger] Cancellazione Studente con id: 1701 avvenuta
+2021-04-18T21:36:33+02:00 [myLogger] Creazione Oggetto Studente
+2021-04-18T21:36:33+02:00 [myLogger] GET METHOD ID= ALL
+2021-04-18T21:36:33+02:00 [myLogger] Ricerca Studenti
+2021-04-18T21:36:33+02:00 [myLogger] SELECT * FROM student
+2021-04-18T21:36:51+02:00 [myLogger] Creazione Oggetto Studente
+2021-04-18T21:36:51+02:00 [myLogger] GET METHOD ID= ALL
+2021-04-18T21:36:51+02:00 [myLogger] Ricerca Studenti
+2021-04-18T21:36:51+02:00 [myLogger] SELECT * FROM student

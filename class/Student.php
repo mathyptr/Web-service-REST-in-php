@@ -1,9 +1,11 @@
 <?php
 include("DBConnection.php");
-require_once '../../../vendor/autoload.php';
-//require_once(".\myLogger.inc");
+
+//require_once '../../../vendor/autoload.php';
+require_once("class/myLogger.inc");
+
 Logger::configure('class/myLogger.xml');
-//$log = Logger::getLogger('myLogger');
+
 
 class Student 
 {
