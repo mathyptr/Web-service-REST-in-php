@@ -1,13 +1,15 @@
 <?php
 $method = $_SERVER["REQUEST_METHOD"];
 
-//require_once '../../../vendor/autoload.php';
-require_once("class/myLogger.inc");
+require_once '../../../vendor/autoload.php';
+//require_once("class/myLogger.inc");
 
 Logger::configure('class/myLogger.xml');
 $log = Logger::getLogger('myLogger');
 
 include('./class/Student.php');
+
+try {
 $student = new Student();
 
 switch($method) {
@@ -29,6 +31,7 @@ switch($method) {
     break;
 
 	case 'POST':
+  $log->debug("POST METHOD (INSERT STUDENT)");
 	$body = file_get_contents("php://input");
 	$js_decoded = json_decode($body, true);
 	$student = new Student();
@@ -37,6 +40,7 @@ switch($method) {
 	$student->_sidiCode = $js_decoded["sidi_code"];
 	$student->_taxCode = $js_decoded["tax_code"];
 	$student->insert($student);
+  $log->debug("END POST METHOD (INSERT STUDENT)");
 	break;
 
   case 'DELETE':
@@ -76,6 +80,14 @@ switch($method) {
   default:
     break;
 }
+}
+ catch(Exception $e) {
+  header("Content-Type: application/json");
+  $js_encode=json_encode($e->getMessage());
+  echo($js_encode);
+  $log->debug("Exception:".$e->getMessage());
+}
+
 
 
 ?>

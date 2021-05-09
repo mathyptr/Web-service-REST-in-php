@@ -15,19 +15,22 @@ class Student
   public $_surname;
   public $_sidiCode;
   public $_taxCode;
- public $_errorSTR;
+  private $_errorSTR="";  
 
   public function __construct() {
     $this->db = new DBConnection();
-    if($this->db->returnConnection()!=NULL){
-        $this->db = $this->db->returnConnection();
+    if($this->db==null)
+      $this->_errorSTR="Errore Connessione al database";
+    else
+     $this->db = $this->db->returnConnection();    
 	self::log()->debug("Creazione Oggetto Studente");
-   }
-   else{
-	$_errorSTR="Errore creazione Oggetto Studente";
-	throw new Exception($_errorSTR);
   }
+
+    // return errorCode
+    public function getErrorCode() {
+      return $this->_errorSTR;
   }
+
   
   public  function setLogger(LogInterface $logger){
 		self::$log = $logger;
@@ -72,14 +75,7 @@ class Student
 	  'taxCode' => $student->_taxCode
     ];
     $stmt->execute($data);
-    if($stmt->rowCount()==1){
-    	self::log()->debug("Inserimento effettuato");
-    }
-    else{
-      $_errorSTR="Errore Inserimento Studente";
-      self::log()->debug($_errorSTR);
-      throw new Exception($_errorSTR);
-    }
+	self::log()->debug("Inserimento effettuato");
   }
   
   
@@ -97,15 +93,7 @@ class Student
 	  'taxCode' => $student->_taxCode
     ];
     $stmt->execute($data);
-
-  if($stmt->rowCount()==1){
-    self::log()->debug("Aggiornamento effettuato ".$js_encode = json_encode($student));
-  }
-  else{
-    $_errorSTR="Aggiornamento NON effettuato ".$js_encode = json_encode($student);
-    self::log()->debug($_errorSTR);
-    throw new Exception($_errorSTR);
-  }
+	self::log()->debug("Aggiornamento effettuato ".$js_encode = json_encode($student));
   }
   
   
@@ -123,15 +111,7 @@ class Student
 	$stmt = $this->db->prepare($sql);
 	$stmt->bindParam(':id', $id);
 	$stmt->execute();
-  if($stmt->rowCount()==1){
-    self::log()->debug("Cancellazione Studente con id: ".$id. " avvenuta");
-  }
-  else{
-    $_errorSTR="Cancellazione Studente con id: ".$id. " NON avvenuta";
-    self::log()->debug($_errorSTR);
-    throw new Exception($_errorSTR);
-  }
-
+	self::log()->debug("Cancellazione Studente con id: ".$id. " avvenuta");
   }
 }
 ?>

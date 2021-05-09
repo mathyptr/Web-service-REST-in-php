@@ -13,7 +13,8 @@ class DBConnection {
           $this->_con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
           $this->_con->exec('SET NAMES utf8');
 	    } catch(PDOException $e) {
-			echo "Connection failed: " . $e->getMessage();
+		echo "Connection failed: " . $e->getMessage();
+		$_con=NULL;
 		}
 
     }

@@ -1,6 +1,6 @@
  $(document).ready(function(){ 
 	$("#mygrid").jqGrid({ //creazione l'instanza di un oggetto jqgrid
-		url:'student.php', //url del server REST
+		url:'http://localhost/esPhpScuola/apiMie/student.php', //url del server REST
 		datatype: "json", //specifico il formato di dati che si aspetta per riempire la griglia
 		colNames:['id', 'name', 'surname', 'sidi_code', 'tax_code'], //imposto nomi delle colonne della griglia
 		colModel:[//definisco le proprietà delle varie colonne
@@ -19,46 +19,9 @@
 		sortorder: "asc", 
         editable: true, 
         multiselect: true, // abilito la selezione multiriga
-	caption:"Manage students", //intestazione della tabella   
-loadError: function (jqXHR, textStatus, errorThrown) {
-    // remove error div if exist
-    $('#' + this.id + '_err').remove();
-
-    // insert div with the error description before the grid
-    $(this).closest('div.ui-jqgrid').before(
-        '<div id="' + this.id + '_err" style="max-width:'  +
-            ';"><div class="ui-state-error ui-corner-all" style="padding:0.7em;float:left;">' +
-             jqXHR.responseText +
-            '</div><div style="clear:left"/></div>'
-    );
-}
-
+		caption:"Manage students" //intestazione della tabella        
 
 	});
-
-
-/*
-loadError: function (jqXHR, textStatus, errorThrown) {
-    alert('HTTP status code: ' + jqXHR.status + '\n' +
-          'textStatus: ' + textStatus + '\n' +
-          'errorThrown: ' + errorThrown);
-    alert('HTTP message body (jqXHR.responseText): ' + '\n' + jqXHR.responseText);
-}*/
-
- 
-/*
-loadError: function (jqXHR, textStatus, errorThrown) {
-    // remove error div if exist
-    $('#' + this.id + '_err').remove();
-
-    // insert div with the error description before the grid
-    $(this).closest('div.ui-jqgrid').before(
-        '<div id="' + this.id + '_err" style="max-width:' + this.style.width +
-            ';"><div class="ui-state-error ui-corner-all" style="padding:0.7em;float:left;">' +
-            decodeErrorMessage(jqXHR, textStatus, errorThrown) +
-            '</div><div style="clear:left"/></div>'
-    );
-}*/
 
 
 $("#mygrid").jqGrid('navGrid','#mypager', //specifico le proprietà del pager per i vari pulsanti e le rispettive callback
@@ -142,19 +105,18 @@ function EditPost(options,postdata) { //funzione che effetua l'aggiornamento dei
     var selRowId = jQuery("#mygrid").getGridParam('selrow'); //ricavo l'id della riga selezionata
     celValue = jQuery("#mygrid").jqGrid ('getCell', selRowId, 'id'); //ricavo l'id dell'impiegato selezionato
     //alert("userID:" +userID);  // test
-    options.url = "student.php/?id="+ celValue; //setto l'url aggiungendo l'id dell'impiegato
-  //  console.log(postdata);  // test
+    options.url = "http://localhost/esPhpScuola/apiMie/student.php/?id="+ celValue; //setto l'url aggiungendo l'id dell'impiegato
+    //console.log(postdata);  // test
 }
 function AddPost(options,postdata) {//funzione che effetua l'inserimento dei dati inviando una richiesta http tramite metodo post
-    options.url = "student.php";
+    options.url = "http://localhost/esPhpScuola/apiMie/student.php";
    // console.log(postdata); //test
-   //alert(postdata);
 }
 function DeletePost(options,postdata) {//funzione che effetua la rimozione dei dati inviando una richiesta http tramite metodo delete
     var selRowIds = jQuery("#mygrid").jqGrid('getGridParam', 'selarrrow'); //ricavo l'id della riga selezionata
     $.each( selRowIds, function( index, value ){
         celValue = jQuery("#mygrid").jqGrid ('getCell', value, 'id'); //ricavo l'id dell'impiegato selezionato
-        var urlREST = "student.php/?id="+celValue ; 
+        var urlREST = "http://localhost/esPhpScuola/apiMie/student.php/?id="+celValue ; 
         $.ajax({ type: "DELETE",url: urlREST });
     
     });

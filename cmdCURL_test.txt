@@ -1,0 +1,17 @@
+curl --header "Content-Type: application/json" --request GET http://localhost/esPhpScuola/apiMie/student.php?id=64
+{"state":true,"student":{"id":"64","name":"Marco","surname":"Rossi","sidi_code":"12342343","tax_code":"XXXXXX00X00X00X"}}
+
+
+
+
+curl --header "Content-Type: application/json" --request DELETE http://localhost/esPhpScuola/apiMie/student.php?id=65
+{"state":true,"student":null}
+
+
+
+
+curl --header "Content-Type: application/json" --request POST --data "{""_name"":""mathilde"", ""_surname"":""patrissi"", ""_sidiCode"":""1234"",""_taxCode"":""abcd""}" http://localhost/esPhpScuola/apiMie/student.php
+
+
+
+curl --header "Content-Type: application/json" --request PUT --data "{""_name"":""mathilde"", ""_surname"":""patrissi"", ""_sidiCode"":""5678"",""_taxCode"":""efgh""}" http://localhost/esPhpScuola/apiMie/student.php?id=1700
